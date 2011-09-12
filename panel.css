@@ -1,148 +1,207 @@
-/* Extra div to handle some IE scenarios with absolute positioning. */
-#sliding-panel-container {
-	position: relative;
-	display: table;
-	z-index: 999;
-	width: 100%;
-	}
+/*
+Name: Sliding Login Panel with jQuery 1.3.2
+Author: Jeremie Tisseau
+Author URI: http://web-kreation.com/
+Script URI: http://web-kreation.com/index.php/tutorials/nice-clean-sliding-login-panel-built-with-jquery/
+Date: March 26, 2009
+Version: 1.0
 
-/* Sliding panel. */
-#sliding-panel {
-	position: absolute;
-	top: 0;
-	z-index: 999;
-	width: 100%;
-	margin: 0 auto;
+	The CSS, XHTML and design is released under Creative Common License 3.0:
+	http://creativecommons.org/licenses/by-sa/3.0/
+
+*/ 
+
+/***** clearfix *****/
+.clear {clear: both;height: 0;line-height: 0;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Panel Tab/button */
+.tab {
+  	background: url(images/tab_b.png) repeat-x 0 0;
+	height: 42px;
+	position: relative;
+    top: 0;
+    z-index: 999;
+}
+
+.tab ul.login {
+	display: block;
+	position: relative;
+  	float: right;
+  	clear: right;
+  	height: 42px;
+	width: auto;
+  	font-weight: bold;
+	line-height: 42px;
+	margin: 0;
+	right: 150px;
+  	color: white;
+  	font-size: 12px;
 	text-align: center;
-	}
+}
 
-/* The part of the panel that actually slides. */
-#sliding-panel .panel {
-	overflow: hidden;
-	display: none;
-	position: relative;
-	z-index: 10;
-	width: 100%;
-	height: 180px;
-	background: #040D12;
-	}
-
-/* Widget container. */
-#sliding-panel .panel-content {
-	overflow: hidden;
-	width: 960px;
-	height: 150px;
-	margin: 15px auto;
+.tab ul.login li.left {
+  	background: url(images/tab_l.png) no-repeat left 0;
+  	height: 42px;
+	width: 30px;
 	padding: 0;
-	text-align: left;
-	border-left: 1px solid #333;
-	}
-
-/* Sliding panel widgets. */
-#sliding-panel .widget {
-	overflow: hidden;
+	margin: 0;
+  	display: block;
 	float: left;
-	width: 289px;
-	height: 150px;
-	margin: 0;
-	padding: 0 15px;
-	font: normal normal normal 14px/21px Georgia, Times, 'Times New Roman', serif !important;
-	color: #888;
-	background: transparent;
-	border: none;
-	border-right: 1px solid #333;
-	}
-#sliding-panel .widget-inside {
-	margin: 0;
+}
+
+.tab ul.login li.right {
+  	background: url(images/tab_r.png) no-repeat left 0;
+  	height: 42px;
+	width: 30px;
 	padding: 0;
-	background: transparent;
-	border: none;
-	}
-
-/* Sliding panel widget titles. */
-#sliding-panel .widget-title {
-	margin: 0 0 5px 0;
-	padding: 0;
-	font: normal normal bold 18px/21px Arial, Verdana, sans-serif !important;
-	color: #999;
-	text-transform: none;
-	background: transparent;
-	border: none;
-	}
-
-/* Sliding panel widget lists. */
-#sliding-panel .widget ul {
-	margin: 0 0 10px 20px;
-	list-style: square;
-	}
-#sliding-panel .widget ul li {
 	margin: 0;
-	padding: 0;
-	background: transparent;
-	border: none;
-	}
+  	display: block;
+	float: left;
+}
 
-/* Sliding panel widget links. */
-#sliding-panel .widget a {
-	font-style: italic;
-	color: #eee;
-	text-decoration: none;
-	}
-#sliding-panel .widget a:hover {
-	text-decoration: underline;
-	}
-
-/* Toggle div wrapper. */
-#sliding-panel .tab {
-	position: relative;
-	top: 0;
-	z-index: 9999;
-	height: 37px;
-	border-top: 2px solid #040D12;
-	}
-
-/* Wrapper for the open/close button. */
-#sliding-panel .tab .toggle {
-  	clear: both;
+.tab ul.login li {
+ 	text-align: left;
+  	padding: 0 6px;
 	display: block;
-	position: relative;
-	width: 960px;
-	height: 35px;
-	line-height: 35px;
-	margin: 0 auto;
-	}
+	float: left;
+	height: 42px;
+  	background: url(images/tab_m.png) repeat-x 0 0;
+}
 
-/* Open/close link. */
-#sliding-panel .tab a {
-	display: block;
-	float: right;
-	position: relative;
-	width: 80px;
-	height: 35px;
-	top: -1px;
-	margin: 0;
-	padding: 0;
-	font: normal normal bold 12px/33px Georgia, Times, 'Times New Roman', serif !important;
-	color: #fff;
-  	background: #040D12;
- 	text-align: center;
-	}
+.tab ul.login li a {
+	color: #15ADFF;
+}
 
-/* Open link. */
-#sliding-panel .tab a.open {
-	}
+.tab ul.login li a:hover {
+	color: white;
+}
 
-/* Close link. */
-#sliding-panel .tab a.close {
-	}
+.tab .sep {color:#414141}
 
-/* Open/close link hover. */
-#sliding-panel .tab a:hover {
+.tab a.open, .tab a.close {
+	height: 20px;
+	line-height: 20px !important;
+	padding-left: 30px !important;
 	cursor: pointer;
-	text-decoration: underline;
-	}
+	display: block;
+	width: 100px;
+	position: relative;
+	top: 11px;
+}
 
-/* Open/close link array (&urarr;). */
-#sliding-panel .tab a .arrow {
-	font-style: normal;
-	}
+.tab a.open {background: url(images/bt_open.png) no-repeat left 0;}
+.tab a.close {background: url(images/bt_close.png) no-repeat left 0;}
+.tab a:hover.open {background: url(images/bt_open.png) no-repeat left -19px;}
+.tab a:hover.close {background: url(images/bt_close.png) no-repeat left -19px;}
+
+/* sliding panel */
+#toppanel {
+    position: absolute;   /*Panel will overlap  content */
+    /*position: relative;*/   /*Panel will "push" the content down */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#panel {
+	width: 100%;
+	height: 250px;
+	color: #999999;
+	background: #272727;
+	overflow: hidden;
+	position: relative;
+	z-index: 3;
+	display: none;
+}
+
+#panel h1 {
+	font-size: 1.6em;
+	padding: 5px 0 10px;
+	margin: 0;
+	color: white;
+}
+
+#panel h2{
+	font-size: 1.2em;
+	padding: 10px 0 5px;
+	margin: 0;
+	color: white;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+
+#panel p {
+	margin: 5px 0;
+	padding: 0;
+}
+
+#panel a {
+	text-decoration: none;
+	color: #15ADFF;
+}
+
+#panel a:hover {
+	color: white;
+}
+
+#panel a-lost-pwd {
+	display: block;
+	float: left;
+}
+
+#panel .content {
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 15px;
+	text-align: left;
+	font-size: 0.85em;
+}
+
+#panel .content .left {
+	width: 280px;
+	float: left;
+	padding: 0 15px;
+	border-left: 1px solid #333;
+}
+
+#panel .content .right {
+	border-right: 1px solid #333;
+}
+
+#panel .content form {
+	margin: 0 0 10px 0;
+}
+
+#panel .content label {
+	float: left;
+	padding-top: 8px;
+	clear: both;
+	width: 280px;
+	display: block;
+}
+
+#panel .content input.field {
+	border: 1px #1A1A1A solid;
+	background: #414141;
+	margin-right: 5px;
+	margin-top: 4px;
+	width: 200px;
+	color: white;
+	height: 16px;
+}
+
+#panel .content input:focus.field {
+	background: #545454;
+}
+

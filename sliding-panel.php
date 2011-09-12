@@ -37,16 +37,6 @@
  */
 
 /**
- * Yes, we're localizing the plugin.  This partly makes sure non-English
- * users can use it too.  To translate into your language use the
- * en_EN.po file as as guide.  Poedit is a good tool to for translating.
- * @link http://poedit.net
- *
- * @since 0.1
- */
-load_plugin_textdomain( 'sliding-panel', false, '/sliding-panel' );
-
-/**
  * Make sure we get the correct directory.
  * @since 0.1
  */
@@ -109,22 +99,67 @@ function get_sliding_panel() {
 
 	if ( is_active_sidebar( 'sliding-panel' ) ) : ?>
 
-	<div id="sliding-panel-container"><div id="sliding-panel">
-
-		<div class="panel">
-			<div class="panel-content">
+<!-- Panel -->
+<div id="toppanel">
+	<div id="panel">
+		<div class="content clearfix">
+			<div class="left">
 				<?php dynamic_sidebar( 'sliding-panel' ); ?>
 			</div>
-		</div>
-
-		<div class="tab">
-			<div class="toggle">
-				<a class="open" title="<?php _e('Open panel', 'sliding-panel'); ?>"><?php _e('Open <span class="arrow">&darr;</span>', 'sliding-panel'); ?></a>
-				<a class="close" title="<?php _e('Close panel', 'sliding-panel'); ?>" style="display: none;"><?php _e('Close <span class="arrow">&uarr;</span>', 'sliding-panel'); ?></a>
+            
+            
+			<div class="left">
+				<!-- Login Form -->
+				<form class="clearfix" action="" method="post">
+					<h1>Member Login</h1>
+                    
+					<label class="grey" for="username">Username:</label>
+					<input class="field" type="text" name="username" id="username" value="" size="23" />
+					<label class="grey" for="password">Password:</label>
+					<input class="field" type="password" name="password" id="password" size="23" />
+	            	<label><input name="rememberMe" id="rememberMe" type="checkbox" checked="checked" value="1" /> &nbsp;Remember me</label>
+        			<div class="clear"></div>
+					<input type="submit" name="submit" value="Login" class="bt_login" />
+				</form>
 			</div>
+			<div class="left right">			
+				<!-- Register Form -->
+				<form action="" method="post">
+					<h1>Not a member yet? Sign Up!</h1>		
+                    
+                    		
+					<label class="grey" for="username">Username:</label>
+					<input class="field" type="text" name="username" id="username" value="" size="23" />
+					<label class="grey" for="email">Email:</label>
+					<input class="field" type="text" name="email" id="email" size="23" />
+					<label>A password will be e-mailed to you.</label>
+					<input type="submit" name="submit" value="Register" class="bt_register" />
+				</form>
+			</div>
+            
+            
+            
+            <div class="left right">
+            </div>
+            
 		</div>
+	</div> <!-- /login -->	
 
-	</div></div>
+    <!-- The tab on top -->	
+	<div class="tab">
+		<ul class="login">
+	    	<li class="left">&nbsp;</li>
+	        <li>Say Hello?</li>
+			<li class="sep">|</li>
+			<li id="toggle">
+				<a id="open" class="open" href="#">Open Panel</a>
+				<a id="close" style="display: none;" class="close" href="#">Close Panel</a>			
+			</li>
+	    	<li class="right">&nbsp;</li>
+		</ul> 
+	</div> <!-- / top -->
+	
+</div> <!--panel -->
 
 	<?php endif;
 }
