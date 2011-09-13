@@ -21,9 +21,11 @@ Full instructions for use can be found in the plugin's `readme.html` file, which
 
 ##Installation##
 
-1. Upload `sliding-panel.zip` to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the *Plugins* menu in WordPress.
-3. Add widgets to the *Sliding Panel* widget area from the *Widgets* panel.
+1. Click on Download on the Github page, after unzipping rename the folder to `sliding-panel`
+2. Upload `sliding-panel` to the `/wp-content/plugins/` directory.
+3. Activate the plugin through the *Plugins* menu in WordPress.
+4. Add widgets to the *Sliding Panel* widget areas from the *Widgets* panel.
+5. See below on what to do if it's not showing up!
 
 More detailed instructions can be found in the plugin's `readme.html` file.
 
@@ -51,6 +53,10 @@ If not using one of those themes, you need to add this code after the opening `<
 
 
 Full instructions are located in the plugin's `readme.html` file.
+
+###My Slider is overlapping content!###
+
+Some themes may cause issues the best thing to do to ensure that it all plays nicely is to ensure that you main `<body>` tag in your themes `header.php` is shown as `<body <?php body_class();?>>`, not all themes include this but really should!
 
 ##Changelog##
 
