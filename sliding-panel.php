@@ -78,6 +78,7 @@ add_action( 'template_redirect', 'load_sliding_panel' );
  * @since 0.1
  */
 if ( !is_admin() && is_active_sidebar( 'sliding-panel' ) ) :
+	wp_enqueue_style( 'sliding-panel', SLIDING_PANEL_URL . '/panel.css', false, 0.1, 'screen' );
 	wp_enqueue_script( 'sliding-panel-js', SLIDING_PANEL_URL . '/panel.js', array( 'jquery' ), '0.1', true );
 endif;
 
