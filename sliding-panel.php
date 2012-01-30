@@ -67,7 +67,7 @@ add_action( 'template_redirect', 'load_sliding_panel' );
  * Loads JS and CSS if the sidebar is active and not in admin.
  * @since 0.1
  */
-if ( !is_admin() && is_active_sidebar( 'sliding-panel' ) ) :
+if ( !is_admin() && (is_active_sidebar( 'left-sliding-panel' ) || is_activesidebar( 'middle-sliding-panel') || is_active_sidebar('right-sliding-panel') ) ) :
 	wp_enqueue_style( 'sliding-panel', SLIDING_PANEL_URL . '/panel.css', false, 0.1, 'screen' );
 	wp_enqueue_script( 'sliding-panel-js', SLIDING_PANEL_URL . '/panel.js', array( 'jquery' ), '0.1', true );
 endif;
@@ -79,7 +79,31 @@ endif;
  * @since 0.1
  */
 function sliding_panel_register_sidebars() {
-	register_sidebar( array( 'name' => __('Sliding Panel', 'sliding-panel'), 'id' => 'sliding-panel', 'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-inside">', 'after_widget' => '</div></div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
+	register_sidebar( array( 
+		'name' => 'Left Sliding Panel', 
+		'id' => 'left-sliding-panel',
+		'description' => 'Appears in the sliding panel on the left hand side',
+		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-inside">', 
+		'after_widget' => '</div></div>', 
+		'before_title' => '<h3 class="widget-title">', 
+		'after_title' => '</h3>' ) );
+	register_sidebar( array( 
+		'name' => 'Middle Sliding Panel', 
+		'id' => 'middle-sliding-panel',
+		'description' => 'Appears in the sliding panel in the middle',
+		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-inside">', 
+		'after_widget' => '</div></div>', 
+		'before_title' => '<h3 class="widget-title">', 
+		'after_title' => '</h3>' ) );
+	register_sidebar( array( 
+		'name' => 'Right Sliding Panel', 
+		'id' => 'right-sliding-panel',
+		'description' => 'Appears in the sliding panel on the right hand side',
+		'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-inside">', 
+		'after_widget' => '</div></div>', 
+		'before_title' => '<h3 class="widget-title">', 
+		'after_title' => '</h3>' ) );
+	
 }
 
 function load_sliding_panel() {
@@ -87,54 +111,24 @@ function load_sliding_panel() {
 		return '';
 }
 
-/**
- * Displays the sliding panel if the widget area is active.
- * This can be manually called in the templates with:
- *	<?php if ( function_exists( 'sliding_panel' ) ) sliding_panel(); ?>
- *
- * @uses is_active_sidebar()
- * @since 0.1
- */
 function get_sliding_panel() {
 
-	if ( is_active_sidebar( 'sliding-panel' ) ) : ?>
+	if ( is_active_sidebar( 'left-sliding-panel' ) || is_active_sidebar( 'middle-sliding-panel') || is_active_sidebar( 'right-sliding-panel') ) : ?>
 
 <!-- Panel -->
 <div id="toppanel">
 	<div id="panel">
 		<div class="content clearfix">
 			<div class="left">
-				<?php dynamic_sidebar( 'sliding-panel' ); ?>
+				<?php dynamic_sidebar( 'left-sliding-panel' ); ?>
 			</div>
             
             
 			<div class="left">
-				<!-- Login Form -->
-				<form class="clearfix" action="" method="post">
-					<h1>Member Login</h1>
-                    
-					<label class="grey" for="username">Username:</label>
-					<input class="field" type="text" name="username" id="username" value="" size="23" />
-					<label class="grey" for="password">Password:</label>
-					<input class="field" type="password" name="password" id="password" size="23" />
-	            	<label><input name="rememberMe" id="rememberMe" type="checkbox" checked="checked" value="1" /> &nbsp;Remember me</label>
-        			<div class="clear"></div>
-					<input type="submit" name="submit" value="Login" class="bt_login" />
-				</form>
+				<?php dynamic_sidebar( 'middle-sliding-panel' ); ?>
 			</div>
 			<div class="left right">			
-				<!-- Register Form -->
-				<form action="" method="post">
-					<h1>Not a member yet? Sign Up!</h1>		
-                    
-                    		
-					<label class="grey" for="username">Username:</label>
-					<input class="field" type="text" name="username" id="username" value="" size="23" />
-					<label class="grey" for="email">Email:</label>
-					<input class="field" type="text" name="email" id="email" size="23" />
-					<label>A password will be e-mailed to you.</label>
-					<input type="submit" name="submit" value="Register" class="bt_register" />
-				</form>
+				<?php dynamic_sidebar( 'right-sliding-panel' ); ?>
 			</div>
             
             
@@ -143,13 +137,13 @@ function get_sliding_panel() {
             </div>
             
 		</div>
-	</div> <!-- /login -->	
+	</div>
 
     <!-- The tab on top -->	
 	<div class="tab">
 		<ul class="login">
 	    	<li class="left">&nbsp;</li>
-	        <li>Say Hello?</li>
+	        <li>Welcome</li>
 			<li class="sep">|</li>
 			<li id="toggle">
 				<a id="open" class="open" href="#">Open Panel</a>
