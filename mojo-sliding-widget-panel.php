@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Sliding Panel
+ * Plugin Name: The Mojo Sliding Widget Panel
  * Plugin URI: http://www.mojowill.com/developer/wordpress-jquery-sliding-widget-panel/
  * Description: Creates a jQuery-based, fully-widgetized sliding panel.
  * Version: 1.0
@@ -11,8 +11,8 @@
  *
  * Based upon the original Sliding Panel by:
  *
- * Author: Justin Tadlock
- * Author URI: http://justintadlock.com
+ * Justin Tadlock
+ * http://justintadlock.com
  *
  * Creates a sliding panel for use on any WordPress site. This has been tested
  * and auto-inserts itself for a few themes.  Other themes need to manually
@@ -25,8 +25,8 @@
  *
  * @copyright 2011
  * @version 1.0
- * @author Will Wilson
- * @link http://
+ * @author Will Wilson <will@mojowill.com>
+ * @link http://www.mojowill.com
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * This program is distributed in the hope that it will be useful,
