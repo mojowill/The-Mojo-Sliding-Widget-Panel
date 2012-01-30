@@ -52,11 +52,11 @@ If not using one of those themes, you need to add this code after the opening `<
 
 Full instructions are located in the plugin's `readme.html` file.
 
-== Changelog ==
+##Changelog##
 
 **Version 1.0**
 * New Author!
 * Changed the default styling!
-**Version 0.1**
 
+**Version 0.1**
 * Plugin launch.  Everything's new!
