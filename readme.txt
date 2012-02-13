@@ -54,6 +54,8 @@ Just inside the body tags add
 Check out the Other Notes section for more info.
 
 == Changelog ==
+= 1.0.1 =
+* Small fix to sidebar calls
 
 = 1.0 =
 * First release
