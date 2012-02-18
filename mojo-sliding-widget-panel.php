@@ -3,7 +3,7 @@
  * Plugin Name: The Mojo Sliding Widget Panel
  * Plugin URI: http://www.mojowill.com/developer/wordpress-jquery-sliding-widget-panel/
  * Description: Creates a jQuery-based, fully-widgetized sliding panel.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: mojowill
  * Author URL: http:/www.mojowill.com
  *
@@ -47,11 +47,16 @@ add_action( 'template_redirect', 'load_sliding_panel' );
  * Loads JS and CSS if the sidebar is active and not in admin.
  * @since 0.1
  */
-if ( !is_admin() && (is_active_sidebar( 'left-sliding-panel' ) || is_active_sidebar( 'middle-sliding-panel') || is_active_sidebar('right-sliding-panel') ) ) :
-	wp_enqueue_style( 'sliding-panel', SLIDING_PANEL_URL . '/panel.css', false, 1.0, 'screen' );
-	wp_enqueue_script( 'sliding-panel-js', SLIDING_PANEL_URL . '/panel.js', array( 'jquery' ), NULL, true );
-endif;
 
+function mojo_sliding_scripts() {
+	if ( !is_admin() && (is_active_sidebar( 'left-sliding-panel' ) || is_active_sidebar( 'middle-sliding-panel') || is_active_sidebar('right-sliding-panel') ) ) :
+		wp_enqueue_style( 'sliding-panel', SLIDING_PANEL_URL . 'panel.css', false, null, 'screen' );
+		wp_enqueue_script( 'sliding-panel-js', SLIDING_PANEL_URL . 'panel.js', array( 'jquery' ), NULL, true );
+	endif;
+
+}
+
+add_action( 'init', 'mojo_sliding_scripts' );
 /**
  * Registers the sliding panel widget area.
  * @uses register_sidebar()

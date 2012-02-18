@@ -55,6 +55,9 @@ Check out the Other Notes section for more info.
 
 == Changelog ==
 
+= 1.0.3 =
+* Some fixes and tidy ups.
+
 = 1.0.2 =
 * Fixing path and URL constants
 
