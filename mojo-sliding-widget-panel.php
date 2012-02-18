@@ -3,7 +3,7 @@
  * Plugin Name: The Mojo Sliding Widget Panel
  * Plugin URI: http://www.mojowill.com/developer/wordpress-jquery-sliding-widget-panel/
  * Description: Creates a jQuery-based, fully-widgetized sliding panel.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: mojowill
  * Author URL: http:/www.mojowill.com
  *
@@ -30,24 +30,11 @@
  */
 
 /**
- * Make sure we get the correct directory.
- * @since 0.1
- */
-if ( !defined('WP_CONTENT_URL' ) )
-	define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
-if ( !defined( 'WP_CONTENT_DIR' ) )
-	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-if ( !defined( 'WP_PLUGIN_URL' ) )
-	define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-if ( !defined( 'WP_PLUGIN_DIR' ) )
-	define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-
-/**
  * Define constant paths to the plugin folder.
- * @since 0.1
+ * @since 1.0.2
  */
-define( SLIDING_PANEL, WP_PLUGIN_DIR . '/sliding-panel' );
-define( SLIDING_PANEL_URL, WP_PLUGIN_URL . '/sliding-panel' );
+if ( ! defined( 'SLIDING_PANEL_URL' ) )
+	define( 'SLIDING_PANEL_URL', plugin_dir_url( __FILE__) );
 
 /**
  * Add actions
